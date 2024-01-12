@@ -1,0 +1,36 @@
+body{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header{
+    background-color: #B62924;
+}
+
+.navbar{
+    border-bottom: 2px solid #B62924;
+}
+
+.logo{
+    width: 100px;
+    object-fit: cover;
+}
+
+.card{
+    border: 2px solid #B62924;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top: none;
+}
+
+.card-img-top{
+    aspect-ratio: 1/2;
+}
+
+.card-body h5{
+    color: #B62924;
+}
+
+footer{
+     background-color:#B62924 ;
+    
+}
