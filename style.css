@@ -6,14 +6,21 @@ header{
     background-color: #B62924;
 }
 
-.navbar{
-    border-bottom: 2px solid #B62924;
-}
-
 .logo{
     width: 100px;
     object-fit: cover;
 }
+
+.navbar{
+    border-bottom: 2px solid #B62924;
+}
+
+.dropdown-menu[data-bs-popper]{
+    left: auto;
+    right: 0;
+}
+
+
 
 .card{
     border: 2px solid #B62924;
@@ -30,7 +37,17 @@ header{
     color: #B62924;
 }
 
+ion-icon{
+    cursor: pointer;
+}
+
 footer{
      background-color:#B62924 ;
-    
+}
+
+
+@media screen and (max-width: 991px){
+    form{
+        margin-top: 15px;
+    }
 }

@@ -17,6 +17,10 @@ fetch("https://striveschool-api.herokuapp.com/books")
     <p class="card-text">Genre: ${category}.</p>
     <p class="card-text">Price: ${price}.</p>
   </div>
+  <div class="d-flex justify-content-between px-4 pb-3">
+  <ion-icon class="fs-3" name="cart-outline"></ion-icon>
+  <ion-icon class="fs-3" name="play-skip-forward-outline"></ion-icon>
+  </div>
 </div>
 </div>`;
 
