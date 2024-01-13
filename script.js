@@ -1,46 +1,14 @@
-fetch("https://striveschool-api.herokuapp.com/books")
-  .then((res) => res.json())
-  .then((data) => {
-    const books = data;
-    const marketPlace = document.querySelector("#marketPlace");
+import {getBooks, displayBooks} from "./Book.js";
 
-    books.forEach((book) => {
-      const title = book.title;
-      const cover = book.img;
-      const price = book.price;
-      const category = book.category;
 
-      marketPlace.innerHTML += `
-        <div class="book-card col-12 col-sm-12 col-md-3 col-lg-2 pb-4">
-          <div class="card">
-            <img src="${cover}" class="card-img-top w-100 h-100" alt="Book cover">
-            <div class="card-body">
-              <h5 class="card-title text-truncate">${title}</h5>
-              <p class="card-text">Genre: ${category}.</p>
-              <p class="card-text">Price: ${price}.</p>
-            </div>
-            <div class="d-flex justify-content-between px-4 pb-3">
-              <ion-icon class="fs-3" name="cart-outline"></ion-icon>
-              <ion-icon class="fs-3 skip" name="play-skip-forward-outline"></ion-icon>
-            </div>
-          </div>
-        </div>`;
-    });
+// 1. prendo il dato
+const books = await getBooks()
 
-    marketPlace.classList.add("row", "py-4", "ps-3", "w-100");
+// 2. inserisco il dato nell'html
+const marketPlace = document.querySelector("#marketPlace");
+marketPlace.classList.add("row", "py-4", "ps-3", "w-100");
+const skipButtons = document.querySelectorAll(".skip");
+const cards = document.querySelectorAll(".book-card");
 
-    const skipButtons = document.querySelectorAll(".skip");
-    const cards = document.querySelectorAll(".book-card");
+displayBooks(books,marketPlace)
 
-    skipButtons.forEach((skip, index) => {
-      skip.addEventListener("click", (ev) => {
-        if (ev.target === skip) {
-          cards[index].style.display = "none";
-        }
-      });
-    });
-  })
-  .catch((error) => {
-    console.error(error);
-    // alert(`Error: ${error}`);
-  });
