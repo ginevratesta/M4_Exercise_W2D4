@@ -37,6 +37,12 @@ header{
     color: #B62924;
 }
 
+.img-cart-holder{
+    width: 40px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
 ion-icon{
     cursor: pointer;
 }
