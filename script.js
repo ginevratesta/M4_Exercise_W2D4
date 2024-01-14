@@ -85,7 +85,7 @@ const emptyCart = () => {
 
 const filteredBooks = () => {
   const input = document.getElementById("search-bar");
-  input.addEventListener("keyup", (ev) => {
+  input.addEventListener("keyup", () => {
     let cardsToEvaluate = [...document.querySelectorAll(".book-card")];
     cardsToEvaluate.forEach((cardToEvaluate) => {
       const title = cardToEvaluate
