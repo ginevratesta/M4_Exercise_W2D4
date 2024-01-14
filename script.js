@@ -1,4 +1,4 @@
-import {getBooks,displayBooks} from "./Book.js";
+import {getBooks, displayBooks} from "./Book.js";
 
 // Taking the parameter with await because it is an asyncronous function
 const books = await getBooks()

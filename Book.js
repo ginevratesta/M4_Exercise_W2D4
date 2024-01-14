@@ -9,7 +9,7 @@ const getBooks = async () => {
   }
 };
 
-const getBook = async (asin) => {
+const getBookID = async (asin) => {
   try {
     const res = await fetch(
       "https://striveschool-api.herokuapp.com/books/" + asin
@@ -27,9 +27,9 @@ const formatBookHtml = (book) => {
   const cover = book.img;
   const price = book.price;
   const category = book.category;
-  const asin = book.asin;
+  const id = book.asin;
   const formattedHtml = `
-      <div id="${asin}" class="book-card col-12 col-sm-12 col-md-3 col-lg-2 pb-4">
+      <div id="${id}" class="book-card col-12 col-sm-12 col-md-3 col-lg-2 pb-4">
         <div class="card">
           <img src="${cover}" class="card-img-top w-100 h-100" alt="Book cover">
           <div class="card-body">
@@ -60,24 +60,48 @@ const addSkipActionButton = () => {
 
 const addBookToCart = (books) => {
   books.forEach((book) => {
-    const bookHtmlElement = document.getElementById(book.asin);
+    const bookHtmlElement = document.getElementById(`${book.asin}`);
     const cartSelections = document.querySelector(".dropdown-menu");
     const cartButton = bookHtmlElement.querySelector(".cartButtons");
     cartButton.addEventListener("click", async (ev) => {
       const cardElement = ev.target.parentElement.parentElement.parentElement;
-      const bookData = await getBook(cardElement.id);
+      const bookData = await getBookID(cardElement.id);
       if (ev.target === cartButton) {
-        cartSelections.innerHTML += `<li class="d-flex align-items-center justify-content-between m-2">
+        const alreadyInCart =
+          cartSelections.querySelectorAll(`#li-${bookData.asin}`).length === 0
+            ? false
+            : true;
+        if (!alreadyInCart) {
+          cartSelections.innerHTML += `<li id="li-${bookData.asin}" class="d-flex align-items-center justify-content-between m-2">
             <div class="img-cart-holder me-2">
             <img class="w-100 h-100" src="${bookData.img}" alt="book cover"/>
             </div>
             <span class="text-truncate">${bookData.title}</span>
+            <span id="li-counter-${bookData.asin}" class="ms-2">1</span>
             </li>`;
-            cartButton.style.color = "red";
+          cartButton.style.color = "red";
+        } else {
+          let itemCounter = document.getElementById(
+            `li-counter-${bookData.asin}`
+          );
+          let actualCount = parseInt(itemCounter.innerText);
+          let nextCount = actualCount + 1;
+          itemCounter.innerText = nextCount.toString();
+        }
       }
     });
   });
 };
+
+// const emptyCart = () => {
+//     const trashCan = document.getElementById("trash-can");
+//     const cartSelections = document.querySelector(".dropdown-menu");
+//     trashCan.addEventListener("click", () => {
+//       console.log("Trash can clicked!");
+//       cartSelections.innerHTML = "";
+//     });
+//   };
+  
 
 const displayBooks = (books, marketPlace) => {
   books.forEach((book) => {
@@ -86,6 +110,7 @@ const displayBooks = (books, marketPlace) => {
   });
   addSkipActionButton();
   addBookToCart(books);
+  emptyCart();
 };
 
-export { getBooks, formatBookHtml, displayBooks };
+export { getBooks, displayBooks };
