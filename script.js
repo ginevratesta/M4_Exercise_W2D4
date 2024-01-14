@@ -73,7 +73,7 @@ const addBookToCart = (books) => {
 
 const emptyCart = () => {
   const trashCan = document.getElementById("trash-can");
-  trashCan.addEventListener("click", (ev) => {
+  trashCan.addEventListener("click", () => {
     let iconsToDeactivate = [
       ...document.querySelectorAll(".cartButtons"),
     ].filter((el) => el.style.color === "red");

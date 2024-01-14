@@ -1,59 +1,56 @@
-body{
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-header{
-    background-color: #B62924;
+header {
+  background-color: #b62924;
 }
 
-.logo{
-    width: 100px;
-    object-fit: cover;
+.logo {
+  width: 100px;
+  object-fit: cover;
 }
 
-.navbar{
-    border-bottom: 2px solid #B62924;
+.navbar {
+  border-bottom: 2px solid #b62924;
 }
 
-.dropdown-menu[data-bs-popper]{
-    left: auto;
-    right: 0;
+.dropdown-menu[data-bs-popper] {
+  left: auto;
+  right: 0;
 }
 
-
-
-.card{
-    border: 2px solid #B62924;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top: none;
+.card {
+  border: 2px solid #b62924;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top: none;
 }
 
-.card-img-top{
-    aspect-ratio: 1/2;
+.card-img-top {
+  aspect-ratio: 1/2;
 }
 
-.card-body h5{
-    color: #B62924;
+.card-body h5 {
+  color: #b62924;
 }
 
-.img-cart-holder{
-    width: 40px;
-    aspect-ratio: 1/1;
-    object-fit: cover;
+.img-cart-holder {
+  width: 40px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
-ion-icon{
-    cursor: pointer;
+ion-icon {
+  cursor: pointer;
 }
 
-footer{
-     background-color:#B62924 ;
+footer {
+  background-color: #b62924;
 }
 
-
-@media screen and (max-width: 991px){
-    form{
-        margin-top: 15px;
-    }
+@media screen and (max-width: 991px) {
+  form {
+    margin-top: 15px;
+  }
 }
