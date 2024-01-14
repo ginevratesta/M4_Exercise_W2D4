@@ -40,15 +40,13 @@
           class="collapse navbar-collapse justify-content-end"
           id="navbarSupportedContent"
         >
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn me-4" type="submit">Search</button>
-          </form>
+          <input
+            id="search-bar"
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
 
           <ul class="navbar-nav mb-2 mb-lg-0 me-4">
             <li class="nav-item dropdown">
@@ -61,15 +59,15 @@
               >
                 <ion-icon class="fs-3" name="cart-outline"></ion-icon>
               </a>
-              <ul class="dropdown-menu">
-                <div>
-                  <div class="d-flex align-items-center justify-content-center">
-                    <span>Svuota carrello</span>
-                    <ion-icon id="trash-can" name="trash-outline"></ion-icon>
-                    <hr class="dropdown-divider" />
-                  </div>
+              <div class="dropdown-menu">
+                <div
+                  id="trash-can"
+                  class="text-center border-bottom"
+                >
+                  <ion-icon name="trash-outline"></ion-icon>
                 </div>
-              </ul>
+                <ul id="cart-items-list"></ul>
+              </div>
             </li>
           </ul>
         </div>
@@ -83,9 +81,9 @@
 
     <!-- FOOTER -->
     <footer class="d-flex align-items-center justify-content-center py-2">
-      <img class="logo" src="./assets/logo1.png" alt="market-place logo" />
-      <img class="logo" src="./assets/logo1.png" alt="market-place logo" />
-      <img class="logo" src="./assets/logo1.png" alt="market-place logo" />
+      <img class="logo" src="./assets/closed-book.png" alt="market-place logo" />
+      <img class="logo" src="./assets/closed-book.png" alt="market-place logo" />
+      <img class="logo" src="./assets/closed-book.png" alt="market-place logo" />
     </footer>
     <!-- FOOTER END -->
 

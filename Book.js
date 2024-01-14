@@ -61,18 +61,18 @@ const addSkipActionButton = () => {
 const addBookToCart = (books) => {
   books.forEach((book) => {
     const bookHtmlElement = document.getElementById(`${book.asin}`);
-    const cartSelections = document.querySelector(".dropdown-menu");
+    const cartItemsList = document.getElementById("cart-items-list");
     const cartButton = bookHtmlElement.querySelector(".cartButtons");
     cartButton.addEventListener("click", async (ev) => {
       const cardElement = ev.target.parentElement.parentElement.parentElement;
       const bookData = await getBookID(cardElement.id);
       if (ev.target === cartButton) {
         const alreadyInCart =
-          cartSelections.querySelectorAll(`#li-${bookData.asin}`).length === 0
+            cartItemsList.querySelectorAll(`#li-${bookData.asin}`).length === 0
             ? false
             : true;
         if (!alreadyInCart) {
-          cartSelections.innerHTML += `<li id="li-${bookData.asin}" class="d-flex align-items-center justify-content-between m-2">
+            cartItemsList.innerHTML += `<li id="li-${bookData.asin}" class="item-in-cart d-flex align-items-center justify-content-between m-2">
             <div class="img-cart-holder me-2">
             <img class="w-100 h-100" src="${bookData.img}" alt="book cover"/>
             </div>
@@ -93,15 +93,34 @@ const addBookToCart = (books) => {
   });
 };
 
-// const emptyCart = () => {
-//     const trashCan = document.getElementById("trash-can");
-//     const cartSelections = document.querySelector(".dropdown-menu");
-//     trashCan.addEventListener("click", () => {
-//       console.log("Trash can clicked!");
-//       cartSelections.innerHTML = "";
-//     });
-//   };
-  
+const emptyCart = () => {
+    const trashCan = document.getElementById("trash-can");
+    trashCan.addEventListener("click", (ev) => {
+        let iconsToDeactivate = [...document
+        .querySelectorAll(".cartButtons")]
+        .filter(el => el.style.color === "red");
+        let cartItemsList = document.getElementById("cart-items-list");
+        cartItemsList.innerHTML = null;
+        iconsToDeactivate.forEach(el =>
+            el.style.color = "black"
+            )
+    });
+  };
+
+const filteredBooks = () => {
+    const input = document.getElementById("search-bar");
+    input.addEventListener("keyup", (ev) => {
+            let cardsToEvaluate = [...document.querySelectorAll(".book-card")]
+            cardsToEvaluate.forEach(
+                cardToEvaluate => {
+                    const title = cardToEvaluate.querySelector(".card-title").innerText.toLowerCase()
+                    const isToShow = title.includes(input.value)||input.value.length < 3
+                    cardToEvaluate.style.display = isToShow?"block":"none"
+                }
+            )
+      });
+};
+
 
 const displayBooks = (books, marketPlace) => {
   books.forEach((book) => {
@@ -111,6 +130,7 @@ const displayBooks = (books, marketPlace) => {
   addSkipActionButton();
   addBookToCart(books);
   emptyCart();
+  filteredBooks();
 };
 
 export { getBooks, displayBooks };
