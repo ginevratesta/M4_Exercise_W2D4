@@ -1,26 +1,4 @@
-const getBooks = async () => {
-  try {
-    const res = await fetch("https://striveschool-api.herokuapp.com/books");
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.error("Error:" + error);
-    // alert(error)
-  }
-};
-
-const getBookID = async (asin) => {
-  try {
-    const res = await fetch(
-      "https://striveschool-api.herokuapp.com/books/" + asin
-    );
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.error("Error:" + error);
-    // alert(error)
-  }
-};
+import { getBooks, getBookID } from "./api.js";
 
 const formatBookHtml = (book) => {
   const title = book.title;
@@ -68,11 +46,11 @@ const addBookToCart = (books) => {
       const bookData = await getBookID(cardElement.id);
       if (ev.target === cartButton) {
         const alreadyInCart =
-            cartItemsList.querySelectorAll(`#li-${bookData.asin}`).length === 0
+          cartItemsList.querySelectorAll(`#li-${bookData.asin}`).length === 0
             ? false
             : true;
         if (!alreadyInCart) {
-            cartItemsList.innerHTML += `<li id="li-${bookData.asin}" class="item-in-cart d-flex align-items-center justify-content-between m-2">
+          cartItemsList.innerHTML += `<li id="li-${bookData.asin}" class="item-in-cart d-flex align-items-center justify-content-between m-2">
             <div class="img-cart-holder me-2">
             <img class="w-100 h-100" src="${bookData.img}" alt="book cover"/>
             </div>
@@ -94,33 +72,30 @@ const addBookToCart = (books) => {
 };
 
 const emptyCart = () => {
-    const trashCan = document.getElementById("trash-can");
-    trashCan.addEventListener("click", (ev) => {
-        let iconsToDeactivate = [...document
-        .querySelectorAll(".cartButtons")]
-        .filter(el => el.style.color === "red");
-        let cartItemsList = document.getElementById("cart-items-list");
-        cartItemsList.innerHTML = null;
-        iconsToDeactivate.forEach(el =>
-            el.style.color = "black"
-            )
-    });
-  };
-
-const filteredBooks = () => {
-    const input = document.getElementById("search-bar");
-    input.addEventListener("keyup", (ev) => {
-            let cardsToEvaluate = [...document.querySelectorAll(".book-card")]
-            cardsToEvaluate.forEach(
-                cardToEvaluate => {
-                    const title = cardToEvaluate.querySelector(".card-title").innerText.toLowerCase()
-                    const isToShow = title.includes(input.value)||input.value.length < 3
-                    cardToEvaluate.style.display = isToShow?"block":"none"
-                }
-            )
-      });
+  const trashCan = document.getElementById("trash-can");
+  trashCan.addEventListener("click", (ev) => {
+    let iconsToDeactivate = [
+      ...document.querySelectorAll(".cartButtons"),
+    ].filter((el) => el.style.color === "red");
+    let cartItemsList = document.getElementById("cart-items-list");
+    cartItemsList.innerHTML = null;
+    iconsToDeactivate.forEach((el) => (el.style.color = "black"));
+  });
 };
 
+const filteredBooks = () => {
+  const input = document.getElementById("search-bar");
+  input.addEventListener("keyup", (ev) => {
+    let cardsToEvaluate = [...document.querySelectorAll(".book-card")];
+    cardsToEvaluate.forEach((cardToEvaluate) => {
+      const title = cardToEvaluate
+        .querySelector(".card-title")
+        .innerText.toLowerCase();
+      const isToShow = title.includes(input.value) || input.value.length < 3;
+      cardToEvaluate.style.display = isToShow ? "block" : "none";
+    });
+  });
+};
 
 const displayBooks = (books, marketPlace) => {
   books.forEach((book) => {
