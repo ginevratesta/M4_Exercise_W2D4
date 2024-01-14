@@ -42,7 +42,7 @@ const addBookToCart = (books) => {
     const cartItemsList = document.getElementById("cart-items-list");
     const cartButton = bookHtmlElement.querySelector(".cartButtons");
     cartButton.addEventListener("click", async (ev) => {
-      const cardElement = ev.target.parentElement.parentElement.parentElement;
+      const cardElement = ev.target.closest(".book-card");
       const bookData = await getBookID(cardElement.id);
       if (ev.target === cartButton) {
         const alreadyInCart =
