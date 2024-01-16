@@ -1,25 +1,26 @@
-import {getBookID} from "./api.js"
+import { getBookID } from "./api.js";
 
-let book = {}
+let book = {};
 
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener("DOMContentLoaded", init);
 async function init() {
-  const params = new URLSearchParams(location.search)
-  const id = params.get("id")
-  book = await getBookID(id)
-  displayBook(book)
+  const params = new URLSearchParams(location.search);
+  const id = params.get("id");
+  book = await getBookID(id);
+  displayBook(book);
 }
 
 const displayBook = (book) => {
-  const bookContainer = document.getElementById("book-details-container")
+  const bookContainer = document.getElementById("book-details-container");
   bookContainer.innerHTML = `
-    <h1 class="my-5 title">${book.title}</h1>
-      <div class="d-flex book">
-        <img src="${book.img}" alt="cover" class="me-5 cover w-25"/>
-        <div class="detail">
-            <span class="fw-bold">Description: </span><br>
-          <p class="fw-bold">Price: <span class="price fw-normal">${book.price}$</span></p>
-          <p class="fw-bold">Category: <span class="category fw-normal">${book.category}</span></p>
-        </div>
-      </div>`
-}
+  <div class="row ps-3 mt-3 w-100">
+    <div class="col-lg-4 mb-3">
+  <img class="w-100 h-100 b-red" src="${book.img}" alt="Book cover"/>
+    </div>
+    <div class="col-lg-4">
+      <h1 class="dark-red">${book.title}</h1>
+         <p>Price: ${book.price}</p>
+         <p>Category: ${book.category}</p>
+    </div>
+  </div>`;
+};
