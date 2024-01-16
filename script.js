@@ -18,7 +18,9 @@ const formatBookHtml = (book) => {
           <div class="d-flex justify-content-between px-4 pb-3">
             <ion-icon class="fs-3 cartButtons" name="cart-outline"></ion-icon>
             <ion-icon class="fs-3 skip" name="play-skip-forward-outline"></ion-icon>
-            <ion-icon id="details-${id}" class="fs-3 detailsButton" name="reorder-three-outline"></ion-icon>
+            <a href="./details.html?id=${id}">
+            <ion-icon class="fs-3 detailsButton" name="reorder-three-outline"></ion-icon>
+            </a>
           </div>
         </div>
       </div>`;
