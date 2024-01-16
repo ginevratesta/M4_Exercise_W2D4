@@ -5,7 +5,7 @@ const getBooks = async () => {
     return data;
   } catch (error) {
     console.error("Error:" + error);
-    alert(error);
+    // alert(error);
   }
 };
 
@@ -18,7 +18,7 @@ const getBookID = async (asin) => {
     return data;
   } catch (error) {
     console.error("Error:" + error);
-    alert(error);
+    // alert(error);
   }
 };
 
