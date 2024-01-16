@@ -98,19 +98,6 @@ const filteredBooks = () => {
   });
 };
 
-const newPageDetails = (books) => {
-  const detailBtn = document.querySelectorAll(".detailsButton");
-
-  detailBtn.forEach(btn => {btn.addEventListener("click", () => {
-    window.open("details.html");
-  })
-})
-}
-
-
-  
-
-
 const displayBooks = (books, marketPlace) => {
   books.forEach((book) => {
     const formattedHtml = formatBookHtml(book);
@@ -120,7 +107,6 @@ const displayBooks = (books, marketPlace) => {
   addBookToCart(books);
   emptyCart();
   filteredBooks();
-  newPageDetails(books);
 };
 
 export { getBooks, displayBooks };
