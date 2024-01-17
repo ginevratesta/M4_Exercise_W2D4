@@ -20,4 +20,11 @@ This project is a simple web application that fetches a book API and displays th
 ## Installation
 1. Clone the repository to your local machine.
    ```bash
-   git clone https://github.com/your-username/book-api-project.git
+   git clone https://github.com/ginevratesta/M4_Exercise_W2D4
+
+## Github Pages 
+2. View the project directly on your browser - no installation needed.
+   
+   
+
+
